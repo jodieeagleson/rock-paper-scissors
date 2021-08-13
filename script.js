@@ -1,6 +1,6 @@
 const computerThrows = ["rock", "paper", "scissors"];
-const playerInput = prompt("Rock, Paper or Scissors - which do you choose?");
-const playerInputLowerCase = playerInput.toLowerCase();
+let playerInput = "";
+let playerInputLowerCase = playerInput.toLowerCase();
 
 const computerPlay = () => {
   const roll = Math.floor(Math.random() * computerThrows.length);
@@ -8,7 +8,7 @@ const computerPlay = () => {
   return computerThrows[roll];
 };
 
-const computerSelection = computerPlay();
+let computerSelection = computerPlay();
 const compareTwoItemsAndDecideWhoWins = (pinput, cinput) => {
   if (pinput === "rock") {
     if (cinput === "paper") {
@@ -28,14 +28,14 @@ const compareTwoItemsAndDecideWhoWins = (pinput, cinput) => {
     }
   } else if (pinput === "scissors") {
     if (cinput === "rock") {
-        return "Computer wins";
-      } else if (cinput === "paper") {
-        return "Player wins";
-      } else {
-        throw Error("Items are the same");
-      }
+      return "Computer wins";
+    } else if (cinput === "paper") {
+      return "Player wins";
+    } else {
+      throw Error("Items are the same");
+    }
   } else {
-      throw Error("something's up");
+    throw Error("something's up");
   }
 };
 
@@ -50,7 +50,17 @@ const playRound = () => {
   }
 };
 
-console.log("The player throws" + " " + playerInputLowerCase + "!!");
-console.log("The computer throws" + " " + computerSelection + "!!");
+const game = () => {
+  for (let singleRound = 0; singleRound < 5; singleRound++) {
+    playerInput = prompt("Rock, Paper or Scissors - which do you choose?");
+    playerInputLowerCase = playerInput.toLowerCase();
+    computerSelection = computerPlay();
+    console.log("The player throws" + " " + playerInputLowerCase + "!!" + " " + "The computer throws" + " " + computerSelection + "!!" + " " + playRound());
+  } 
+   console.log("GOOD GAME!");
+};
 
-console.log(playRound());
+game();
+
+// Next time, need to keeps score and reports a winner or loser at the end. 
+// change throwing an error, re-prompt for better value
