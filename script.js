@@ -1,5 +1,7 @@
 const computerThrows = ["rock", "paper", "scissors"];
 let playerInput = "";
+let playerWins = "";
+let computerWins = "";
 let playerInputLowerCase = playerInput.toLowerCase();
 
 const computerPlay = () => {
@@ -9,38 +11,47 @@ const computerPlay = () => {
 };
 
 let computerSelection = computerPlay();
+
 const compareTwoItemsAndDecideWhoWins = (pinput, cinput) => {
   if (pinput === "rock") {
     if (cinput === "paper") {
+      computerWins = computerWins + 1;
       return "Computer wins";
     } else if (cinput === "scissors") {
+      playerWins = playerWins + 1;
       return "Player wins";
     } else {
       throw Error("Items are the same");
     }
   } else if (pinput === "paper") {
     if (cinput === "rock") {
+      playerWins = playerWins + 1;
       return "Player wins";
     } else if (cinput === "scissors") {
+      computerWins = computerWins + 1;
       return "Computer wins";
     } else {
       throw Error("Items are the same");
     }
   } else if (pinput === "scissors") {
     if (cinput === "rock") {
+      computerWins = computerWins + 1;
       return "Computer wins";
     } else if (cinput === "paper") {
+      playerWins = playerWins + 1;
       return "Player wins";
     } else {
       throw Error("Items are the same");
     }
   } else {
-    throw Error("something's up");
+    throw Error("Your machine gun and/or laser exploded and broke the game; try again with Rock, Paper or Scissors!");
   }
 };
 
 const playRound = () => {
   if (playerInputLowerCase === computerSelection) {
+    playerWins = playerWins + 1;
+    computerWins = computerWins +1;
     return "It's a Tie!";
   } else {
     return compareTwoItemsAndDecideWhoWins(
@@ -55,12 +66,31 @@ const game = () => {
     playerInput = prompt("Rock, Paper or Scissors - which do you choose?");
     playerInputLowerCase = playerInput.toLowerCase();
     computerSelection = computerPlay();
-    console.log("The player throws" + " " + playerInputLowerCase + "!!" + " " + "The computer throws" + " " + computerSelection + "!!" + " " + playRound());
-  } 
-   console.log("GOOD GAME!");
+    console.log(
+      "The player throws" +
+        " " +
+        playerInputLowerCase +
+        "!!" +
+        " " +
+        "The computer throws" +
+        " " +
+        computerSelection +
+        "!!" +
+        " " +
+        playRound()
+    );
+  }
+};
+
+const scoreTally = (pwin, cwin) => {
+  if (pwin > cwin) {
+    console.log("Player wins!");
+  } else if (pwin < cwin) {
+    console.log("Computer wins!");
+  } else {
+    console.log("It's a draw! Good game!");
+  }
 };
 
 game();
-
-// Next time, need to keeps score and reports a winner or loser at the end. 
-// change throwing an error, re-prompt for better value
+scoreTally(playerWins, computerWins);
