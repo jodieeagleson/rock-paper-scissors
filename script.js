@@ -1,7 +1,7 @@
 const computerThrows = ["rock", "paper", "scissors"];
 let playerInput = "";
-let playerWins = "";
-let computerWins = "";
+let playerWins = 0;
+let computerWins = 0;
 let playerInputLowerCase = playerInput.toLowerCase();
 
 const computerPlay = () => {
@@ -94,3 +94,4 @@ const scoreTally = (pwin, cwin) => {
 
 game();
 scoreTally(playerWins, computerWins);
+console.log(playerWins);
