@@ -61,26 +61,26 @@ const playRound = () => {
   }
 };
 
-const game = () => {
-  for (let singleRound = 0; singleRound < 5; singleRound++) {
-    playerInput = prompt("Rock, Paper or Scissors - which do you choose?");
-    playerInputLowerCase = playerInput.toLowerCase();
-    computerSelection = computerPlay();
-    console.log(
-      "The player throws" +
-        " " +
-        playerInputLowerCase +
-        "!!" +
-        " " +
-        "The computer throws" +
-        " " +
-        computerSelection +
-        "!!" +
-        " " +
-        playRound()
-    );
-  }
-};
+// const game = () => {
+//   for (let singleRound = 0; singleRound < 5; singleRound++) {
+//     playerInput = prompt("Rock, Paper or Scissors - which do you choose?");
+//     playerInputLowerCase = playerInput.toLowerCase();
+//     computerSelection = computerPlay();
+//     console.log(
+//       "The player throws" +
+//         " " +
+//         playerInputLowerCase +
+//         "!!" +
+//         " " +
+//         "The computer throws" +
+//         " " +
+//         computerSelection +
+//         "!!" +
+//         " " +
+//         playRound()
+//     );
+//   }
+// };
 
 const scoreTally = (pwin, cwin) => {
   if (pwin > cwin) {
@@ -92,6 +92,6 @@ const scoreTally = (pwin, cwin) => {
   }
 };
 
-game();
+// game();
 scoreTally(playerWins, computerWins);
 console.log(playerWins);
